@@ -16,7 +16,17 @@ export default function Meme () {
         }
         getMeme()
     }, [])
-    
+
+    function getMemeImage() {
+        const randomNumber = Math.floor(Math.random() * allMemes.length)
+        const url = allMemes[randomNumber].url
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            randomImage: url
+        }))
+        
+    }
+
     return (
         <main>
             <form className = "form">
