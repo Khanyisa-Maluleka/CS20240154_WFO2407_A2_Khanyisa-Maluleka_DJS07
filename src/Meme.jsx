@@ -7,6 +7,16 @@ export default function Meme () {
         randomImage: "http://i.imgflip.com/1bij.jpg" 
     })
     const [allMemes, setAllMemes] = React.useState([])
+
+    React.useEffect(() => {
+        async function getMemes() {
+            const res = await fetch("https://api.imgflip.com/get_memes")
+            const data = await res.json()
+            setAllMemes(data.data.memes)
+        }
+        getMeme()
+    }, [])
+    
     return (
         <main>
             <form className = "form">
